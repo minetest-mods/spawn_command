@@ -23,7 +23,7 @@ minetest.register_chatcommand("spawn", {
             pos.y > (cursed_world.location_y - cursed_world.dimension_y)
         then   --check global table for cursed_world mod
             --minetest.chat_send_player(name, "T"..(cursed_world.location_y + cursed_world.dimension_y).." "..(cursed_world.location_y - cursed_world.dimension_y))
-            local spawn_pos = spawn_command.pos;
+            local spawn_pos = vector.round(spawn_command.pos);
             spawn_pos.y = spawn_pos.y + cursed_world.location_y;
             player:setpos(spawn_pos)
             minetest.chat_send_player(name, "Teleported to spawn!")
