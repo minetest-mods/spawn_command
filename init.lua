@@ -6,9 +6,7 @@ if minetest.setting_get_pos("static_spawnpoint") then
     spawn_command.pos = minetest.setting_get_pos("static_spawnpoint")
 end
 
-minetest.register_chatcommand("spawn", {
-    description = "Teleport you to spawn point.",
-    func = function(name)
+function teleport_to_spawn(name)
         local player = minetest.get_player_by_name(name)
         if player == nil then
             -- just a check to prevent the server crashing
@@ -21,5 +19,9 @@ minetest.register_chatcommand("spawn", {
             player:setpos(spawn_command.pos)
             minetest.chat_send_player(name, "Teleported to spawn!")
         end
-    end,
+end
+
+minetest.register_chatcommand("spawn", {
+    description = "Teleport you to spawn point.",
+    func = teleport_to_spawn,
 })
