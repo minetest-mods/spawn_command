@@ -14,7 +14,7 @@ function teleport_to_spawn(name)
         return false
     end
     local pos = player:get_pos()
-    if pos.x>-20 and pos.x<20 and pos.z>-20 and pos.z<20 then
+    if math.abs(spawn_command.pos.x-pos.x)<20 and math.abs(spawn_command.pos.z-pos.z)<20 then
         minetest.chat_send_player(name, "Already close to spawn!")
     elseif cursed_world_exists and _G['cursed_world'] ~= nil and    --check global table for cursed_world mod
         cursed_world.location_y and cursed_world.dimension_y and
